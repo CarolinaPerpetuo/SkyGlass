@@ -7,50 +7,42 @@ Aplicação web de previsão do tempo inspirada no aplicativo Tempo do iPhone, d
 ## 📸 Preview
 
 <p align="center">
-  <img src="./assets/img/preview/previsao-do-tempo.png" alt="Preview do Aplicativo de Clima" width="800">
+  <img src="./assets/img/preview/previsao-do-tempo.jpeg" alt="Preview do SkyGlass" width="900">
 </p>
 
 ---
+
 ## 🚀 Demonstração
 
 Projeto desenvolvido utilizando HTML, CSS e JavaScript com integração à API Open-Meteo para exibição de dados meteorológicos em tempo real.
 
-Principais recursos:
-
-- Consulta de clima por cidade
-- Temperatura atual
-- Sensação térmica
-- Velocidade do vento
-- Umidade do ar
-- Chance de chuva
-- Previsão por hora
-- Previsão para 7 dias
-- Fundo dinâmico baseado nas condições climáticas
-- Layout responsivo
+Acesse a aplicação online:
+🔗 https://carolinaperpetuo.github.io/SkyGlass/
 
 ---
 
 ## 📖 Sobre o Projeto
 
-O **Aplicativo de Clima** permite consultar a previsão do tempo de uma cidade informada pelo usuário.
-
-A aplicação busca os dados meteorológicos através da API Open-Meteo e exibe as informações em uma interface moderna, responsiva e com fundo dinâmico conforme as condições climáticas.
+O **SkyGlass** é uma aplicação web de previsão do tempo inspirada no aplicativo Tempo do iPhone.
+A aplicação utiliza as APIs da Open-Meteo para buscar informações meteorológicas em tempo real e exibi-las em uma interface moderna baseada no conceito de **Glassmorphism**, com fundos dinâmicos que se adaptam automaticamente às condições climáticas da cidade pesquisada.
 
 ---
 
 ## ✨ Funcionalidades
 
-* Buscar clima pelo nome da cidade
-* Exibir temperatura atual
-* Exibir sensação térmica
-* Exibir velocidade do vento
-* Exibir umidade relativa do ar
-* Exibir chance de chuva
-* Exibir previsão por hora
-* Exibir previsão para os próximos 7 dias
-* Alterar o fundo automaticamente conforme o clima
-* Aplicar tema noturno automático
-* Interface responsiva para diferentes tamanhos de tela
+* Busca de cidades em tempo real
+* Temperatura atual
+* Sensação térmica
+* Umidade do ar
+* Velocidade do vento
+* Chance de chuva
+* Previsão por hora
+* Previsão para os próximos 7 dias
+* Fundo dinâmico baseado nas condições climáticas
+* Tema noturno automático
+* Atualização em tempo real
+* Interface Glassmorphism inspirada no aplicativo Tempo do iPhone
+* Layout responsivo para desktop e dispositivos móveis
 
 ---
 
@@ -65,12 +57,14 @@ A aplicação busca os dados meteorológicos através da API Open-Meteo e exibe 
 ---
 
 ## 📂 Estrutura do Projeto
-
 ```text
-APLICATIVO-CLIMA
+SKYGLASS
 │
 ├── assets
 │   ├── img
+│   │   ├── preview
+│   │   │   └── preview-completo.png
+│   │   │
 │   │   ├── ceu-limpo.jpg
 │   │   ├── chuva.jpg
 │   │   ├── ensolarado.jpg
@@ -78,9 +72,6 @@ APLICATIVO-CLIMA
 │   │   ├── nublado.jpg
 │   │   ├── parcialmente-nublado.jpg
 │   │   └── tempestade.jpg
-│   │
-│   └── preview
-│       └── previsao-do-tempo.png
 │
 ├── css
 │   └── style.css
@@ -124,19 +115,16 @@ O projeto utiliza imagens diferentes de fundo conforme a condição climática r
 ## ⚙️ Como Executar o Projeto
 
 Clone este repositório:
-
 ```bash
-git clone https://github.com/CarolinaPerpetuo/aplicativo-clima.git
+git clone https://github.com/CarolinaPerpetuo/SkyGlass.git
 ```
 
 Acesse a pasta do projeto:
-
 ```bash
-cd aplicativo-clima
+cd SkyGlass
 ```
 
 Abra o arquivo `index.html` no navegador.
-
 Também é possível executar utilizando a extensão **Live Server** no VS Code.
 
 ---
@@ -146,7 +134,6 @@ Também é possível executar utilizando a extensão **Live Server** no VS Code.
 ### Open-Meteo Geocoding API
 
 Utilizada para buscar a latitude e longitude da cidade informada.
-
 ```text
 https://geocoding-api.open-meteo.com
 ```
@@ -154,11 +141,9 @@ https://geocoding-api.open-meteo.com
 ### Open-Meteo Forecast API
 
 Utilizada para buscar os dados meteorológicos atuais, previsão por hora e previsão diária.
-
 ```text
 https://api.open-meteo.com
 ```
-
 ---
 
 ## 📚 Aprendizados
@@ -170,9 +155,10 @@ Durante o desenvolvimento deste projeto foram praticados conceitos como:
 * Manipulação do DOM
 * Tratamento de erros
 * Responsividade com CSS
-* Efeito glassmorphism
+* Efeito Glassmorphism
 * Organização de arquivos em projeto front-end
 * Uso de imagens dinâmicas conforme dados da API
+* Deploy com GitHub Pages
 
 ---
 
@@ -180,5 +166,5 @@ Durante o desenvolvimento deste projeto foram praticados conceitos como:
 
 **Carolina Perpetuo**
 
+Engenheira de Software e Desenvolvedora Full Stack.
 
-Engenheira de Software e Dev Full Stack.
