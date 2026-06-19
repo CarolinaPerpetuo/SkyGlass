@@ -12,6 +12,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     transition: background-image .8s ease;
+    overflow-x: hidden;
 }
 
 .app {
@@ -19,6 +20,8 @@ body {
     display: flex;
     justify-content: center;
     padding: 28px 15px;
+    position: relative;
+    z-index: 2;
 }
 
 .weather-container {
@@ -60,6 +63,14 @@ body {
     color: white;
     background: rgba(255,255,255,.18);
     backdrop-filter: blur(15px);
+    transition: all .3s ease;
+}
+
+.search-box button:hover,
+.quick-cities button:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.28);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
 .search-box button {
@@ -106,9 +117,10 @@ body {
     font-size: 2.2rem;
 }
 
-.location-date {
+.location-date,
+.current-time {
     margin-top: 6px;
-    opacity: .8;
+    opacity: .85;
     font-size: .95rem;
 }
 
@@ -222,6 +234,72 @@ body {
     padding: 30px;
     border-radius: 24px;
     background: rgba(255,255,255,.12);
+}
+
+/* Chuva animada */
+
+#rain-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.rain-drop {
+    position: absolute;
+    top: -30px;
+    width: 2px;
+    height: 24px;
+    background: rgba(255,255,255,.55);
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    from {
+        transform: translateY(-50px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* Relâmpago */
+
+.lightning {
+    position: fixed;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lightning.active {
+    animation: flash 7s infinite;
+}
+
+@keyframes flash {
+    0%, 94%, 100% {
+        opacity: 0;
+    }
+
+    95% {
+        opacity: .45;
+    }
+
+    96% {
+        opacity: 0;
+    }
+
+    97% {
+        opacity: .65;
+    }
+
+    98% {
+        opacity: 0;
+    }
 }
 
 @media(max-width:480px) {

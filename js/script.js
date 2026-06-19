@@ -27,6 +27,36 @@ function atualizarBackground(weatherCode) {
     `;
 }
 
+function atualizarAnimacoes(weatherCode) {
+    const rainContainer = document.getElementById("rain-container");
+    const lightning = document.querySelector(".lightning");
+
+    if (!rainContainer || !lightning) return;
+
+    rainContainer.innerHTML = "";
+    lightning.classList.remove("active");
+
+    const codigosChuva = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82];
+    const codigosTempestade = [95, 96, 99];
+
+    if (codigosChuva.includes(weatherCode) || codigosTempestade.includes(weatherCode)) {
+        for (let i = 0; i < 120; i++) {
+            const drop = document.createElement("span");
+
+            drop.classList.add("rain-drop");
+            drop.style.left = Math.random() * 100 + "%";
+            drop.style.animationDuration = Math.random() * 0.5 + 0.5 + "s";
+            drop.style.animationDelay = Math.random() * 2 + "s";
+
+            rainContainer.appendChild(drop);
+        }
+    }
+
+    if (codigosTempestade.includes(weatherCode)) {
+        lightning.classList.add("active");
+    }
+}
+
 async function getWeather(cidade) {
     try {
         const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=1&language=pt&format=json`;
@@ -118,11 +148,10 @@ function formatarDia(data) {
     });
 }
 
-function formatarDataAtual() {
-    return new Date().toLocaleDateString("pt-BR", {
-        weekday: "long",
-        day: "2-digit",
-        month: "long"
+function formatarHoraAtual() {
+    return new Date().toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit"
     });
 }
 
@@ -150,13 +179,14 @@ async function buscarClima() {
     }
 
     atualizarBackground(clima.atual.weather_code);
+    atualizarAnimacoes(clima.atual.weather_code);
 
     resultado.innerHTML = `
         <section class="hero-weather">
             <h2>${clima.cidade}</h2>
 
             <p class="location-date">
-                📍 ${clima.pais} • ${formatarDataAtual()}
+                📍 ${clima.pais}
             </p>
 
             <div class="weather-icon-main">
@@ -175,6 +205,10 @@ async function buscarClima() {
                 Máx ${Math.round(clima.dias.temperature_2m_max[0])}°
                 •
                 Mín ${Math.round(clima.dias.temperature_2m_min[0])}°
+            </p>
+
+            <p class="current-time">
+                Atualizado às ${formatarHoraAtual()}
             </p>
         </section>
 

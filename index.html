@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Previsão do Tempo</title>
+    <title>SkyGlass</title>
+
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+    <!-- chuva animada -->
+    <div id="rain-container"></div>
+
+    <!-- relâmpago -->
+    <div class="lightning"></div>
 
     <main class="app">
         <section class="weather-container">
@@ -25,6 +32,7 @@
                     <button onclick="buscarCidadeRapida('Rio de Janeiro')">Rio de Janeiro</button>
                     <button onclick="buscarCidadeRapida('Madrid')">Madrid</button>
                 </div>
+
             </header>
 
             <div id="resultado" class="resultado">
@@ -35,5 +43,6 @@
     </main>
 
     <script src="./js/script.js"></script>
+
 </body>
 </html>
