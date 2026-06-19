@@ -132,7 +132,7 @@ git clone https://github.com/CarolinaPerpetuo/aplicativo-clima.git
 Acesse a pasta do projeto:
 
 ```bash
-cd NOME-DO-REPOSITORIO
+cd aplicativo-clima
 ```
 
 Abra o arquivo `index.html` no navegador.
