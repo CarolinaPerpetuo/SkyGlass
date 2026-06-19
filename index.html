@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <main class="app">
+        <section class="weather-container">
+
+            <header class="top-area">
+                <h1>Previsão do Tempo</h1>
+
+                <div class="search-box">
+                    <input type="text" id="cidade" placeholder="Buscar cidade">
+                    <button onclick="buscarClima()">Buscar</button>
+                </div>
+
+                <div class="quick-cities">
+                    <button onclick="buscarCidadeRapida('São Paulo')">São Paulo</button>
+                    <button onclick="buscarCidadeRapida('Guarulhos')">Guarulhos</button>
+                    <button onclick="buscarCidadeRapida('Rio de Janeiro')">Rio de Janeiro</button>
+                    <button onclick="buscarCidadeRapida('Madrid')">Madrid</button>
+                </div>
+            </header>
+
+            <div id="resultado" class="resultado">
+                <p class="loading">Carregando clima...</p>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
