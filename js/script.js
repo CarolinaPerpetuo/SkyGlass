@@ -1,17 +1,23 @@
 function atualizarBackground(weatherCode) {
-    let imagem = "ceu-limpo.jpg";
-    const horaAtual = new Date().getHours();
+    let imagem = "ceu-parcialmente-limpo.jpg";
 
-    if (horaAtual >= 18 || horaAtual <= 5) {
-        imagem = "noite.jpg";
+    const horaAtual = new Date().getHours();
+    const noite = horaAtual >= 18 || horaAtual <= 5;
+
+    if (noite) {
+        if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(weatherCode)) {
+            imagem = "noite-chuvosa.jpg";
+        } else {
+            imagem = "noite-limpa.jpg";
+        }
     } else if (weatherCode === 0) {
-        imagem = "ceu-limpo.jpg";
+        imagem = "ceu-parcialmente-limpo.jpg";
     } else if ([1, 2].includes(weatherCode)) {
-        imagem = "ensolarado.jpg";
-    } else if (weatherCode === 3) {
         imagem = "parcialmente-nublado.jpg";
-    } else if ([45, 48].includes(weatherCode)) {
+    } else if (weatherCode === 3) {
         imagem = "nublado.jpg";
+    } else if ([45, 48].includes(weatherCode)) {
+        imagem = "neblina.jpg";
     } else if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(weatherCode)) {
         imagem = "chuva.jpg";
     } else if ([95, 96, 99].includes(weatherCode)) {
@@ -77,6 +83,7 @@ async function getWeather(cidade) {
 
         return {
             cidade: local.name,
+            estado: local.admin1,
             pais: local.country,
             atual: weatherData.current,
             horas: weatherData.hourly,
@@ -155,6 +162,40 @@ function formatarHoraAtual() {
     });
 }
 
+function formatarEstado(estado) {
+    const estadosBrasil = {
+        "Acre": "AC",
+        "Alagoas": "AL",
+        "Amapá": "AP",
+        "Amazonas": "AM",
+        "Bahia": "BA",
+        "Ceará": "CE",
+        "Distrito Federal": "DF",
+        "Espírito Santo": "ES",
+        "Goiás": "GO",
+        "Maranhão": "MA",
+        "Mato Grosso": "MT",
+        "Mato Grosso do Sul": "MS",
+        "Minas Gerais": "MG",
+        "Pará": "PA",
+        "Paraíba": "PB",
+        "Paraná": "PR",
+        "Pernambuco": "PE",
+        "Piauí": "PI",
+        "Rio de Janeiro": "RJ",
+        "Rio Grande do Norte": "RN",
+        "Rio Grande do Sul": "RS",
+        "Rondônia": "RO",
+        "Roraima": "RR",
+        "Santa Catarina": "SC",
+        "São Paulo": "SP",
+        "Sergipe": "SE",
+        "Tocantins": "TO"
+    };
+
+    return estadosBrasil[estado] || estado || "";
+}
+
 function buscarCidadeRapida(cidade) {
     document.getElementById("cidade").value = cidade;
     buscarClima();
@@ -183,7 +224,9 @@ async function buscarClima() {
 
     resultado.innerHTML = `
         <section class="hero-weather">
-            <h2>${clima.cidade}</h2>
+            <h2>
+                ${clima.cidade}${clima.estado ? `, ${formatarEstado(clima.estado)}` : ""}
+            </h2>
 
             <p class="location-date">
                 📍 ${clima.pais}
