@@ -83,7 +83,7 @@ async function getWeather(cidade) {
 
         return {
             cidade: local.name,
-            estado: local.admin1,
+            estado: local.admin1 || "",
             pais: local.country,
             atual: weatherData.current,
             horas: weatherData.hourly,
@@ -162,40 +162,6 @@ function formatarHoraAtual() {
     });
 }
 
-function formatarEstado(estado) {
-    const estadosBrasil = {
-        "Acre": "AC",
-        "Alagoas": "AL",
-        "Amapá": "AP",
-        "Amazonas": "AM",
-        "Bahia": "BA",
-        "Ceará": "CE",
-        "Distrito Federal": "DF",
-        "Espírito Santo": "ES",
-        "Goiás": "GO",
-        "Maranhão": "MA",
-        "Mato Grosso": "MT",
-        "Mato Grosso do Sul": "MS",
-        "Minas Gerais": "MG",
-        "Pará": "PA",
-        "Paraíba": "PB",
-        "Paraná": "PR",
-        "Pernambuco": "PE",
-        "Piauí": "PI",
-        "Rio de Janeiro": "RJ",
-        "Rio Grande do Norte": "RN",
-        "Rio Grande do Sul": "RS",
-        "Rondônia": "RO",
-        "Roraima": "RR",
-        "Santa Catarina": "SC",
-        "São Paulo": "SP",
-        "Sergipe": "SE",
-        "Tocantins": "TO"
-    };
-
-    return estadosBrasil[estado] || estado || "";
-}
-
 function buscarCidadeRapida(cidade) {
     document.getElementById("cidade").value = cidade;
     buscarClima();
@@ -224,12 +190,10 @@ async function buscarClima() {
 
     resultado.innerHTML = `
         <section class="hero-weather">
-            <h2>
-                ${clima.cidade}${clima.estado ? `, ${formatarEstado(clima.estado)}` : ""}
-            </h2>
+            <h2>${clima.cidade}</h2>
 
             <p class="location-date">
-                📍 ${clima.pais}
+                📍 ${clima.estado ? `${clima.estado}, ` : ""}${clima.pais}
             </p>
 
             <div class="weather-icon-main">
